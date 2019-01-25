@@ -1,0 +1,61 @@
+@import '../../global.scss';
+:host {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    bottom: 0;
+    top: 0;
+    left: 0;
+    right: 0;
+    .form {
+        display: flex;
+        flex-direction: column;
+        flex: 1;
+        padding-top: 24px;
+        .input-list {
+            display: flex;
+            justify-content: space-evenly;
+            .form-item {
+                font-size: larger;
+                display: flex;
+                align-items: center;
+                flex-direction: column;
+                input {
+                    font-size: inherit;
+                }
+            }
+        }
+
+        .ruffle-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+
+            .info {
+                // opacity: .5;
+                height: 50px;
+                .message {
+                    font-weight: 600;
+                    font-size: larger;
+                }
+            }
+        }
+        .result {
+            display: flex;
+            overflow: auto;
+            flex: 1;
+        }
+    }
+    .description {
+        background-color: lighten($primary, 10%);
+        color: $primaryText;
+        display: flex;
+        justify-content: center;
+        flex: 1;
+        max-height: 50px;
+        align-items: center;
+
+        
+    }
+}

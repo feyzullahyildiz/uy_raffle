@@ -1,0 +1,15 @@
+<div class="ruffle-container">
+    <button class="add-button" (click)="addRuffleItem()"> Ekle </button>
+    <div class="ruffle-list">
+        <div (click)="setRuffleItem(item)" class="ruffle-item" *ngFor="let item of this.items">
+            <span class="text">
+                    {{item}}
+            </span>
+            <span (click)="deleteItem($event, item)" class="delete">Sil</span>
+        </div>
+    </div>
+</div>
+
+<div class="router-outlet">
+    <router-outlet></router-outlet>
+</div>

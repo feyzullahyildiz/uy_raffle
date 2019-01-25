@@ -1,0 +1,45 @@
+
+<div class="form">
+
+  <div class="input-list">
+
+    <div class="form-item">
+      <div class="form-item-title"> Başlangıç Sayısı</div>
+      <div class="form-item-text">
+        <input #ruffleStartElement (input)="startValue($event)" type="number" value="0">
+      </div>
+    </div>
+    <div class="form-item">
+      <div class="form-item-title"> Bitiş Sayısı</div>
+      <div class="form-item-text">
+        <input #ruffleEndElement (input)="endValue($event)" type="number" value="0">
+      </div>
+    </div>
+    <div class="form-item">
+      <div class="form-item-title"> Toplam Çekiliş</div>
+      <div class="form-item-text">
+        <input #ruffleTotalElement (input)="countValue($event)" type="number" value="0">
+      </div>
+    </div>
+  </div>
+  <div class="ruffle-container">
+    <div class="info">
+      <div class="message">
+        {{message}}
+      </div>
+    </div>
+    <div class="form-item">
+      <button class="ruffle" [disabled]="!success" (click)="ruffle()">Çekilişi Çek</button>
+    </div>
+  </div>
+  <div class="result">
+    <ul>
+      <li *ngFor="let res of resultArray">
+        {{res}}
+      </li>
+    </ul>
+  </div>
+</div>
+<div class="description">
+    Bu çekiliş 2 sayı arasında istenilen miktarda çekiliş yapabilmeniz içindir.
+</div>

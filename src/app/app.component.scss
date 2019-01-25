@@ -1,0 +1,38 @@
+$menuHoverColor: #eb3c39;
+:host{
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    .nav-bar {
+        height: 90px;
+        background-color: white;
+        display: flex;
+        justify-content: space-evenly;
+        align-items: center;
+        .logo {
+            width: 146px;
+            height: 60px;
+            img {
+                width: 100%;
+                height: 100%;
+            }
+        }
+        .routes{
+            a {
+                cursor: pointer;
+                text-decoration: none;
+                margin: 0 8px;
+                transition: color .3s ease-out;
+                font-weight: 600;
+                &:hover, &.active{
+                    color: $menuHoverColor;
+                }
+            }
+        }
+    }
+    .router-outlet {
+        position: relative;
+        background-color: #f6f7f6;
+        flex-grow: 1;
+    }
+}
