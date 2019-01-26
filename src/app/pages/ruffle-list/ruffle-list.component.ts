@@ -54,6 +54,7 @@ export class RuffleListComponent implements OnInit {
         const index = this.items.indexOf(item)
         if(index !== -1){
           this.items.splice(index, 1)
+          localStorage.removeItem(item)
           this.updateLocalStorage()
         }
       }

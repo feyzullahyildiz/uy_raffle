@@ -1,11 +1,18 @@
-
 <div class="ruffle-name">
-  {{ruffleItem}}
+  <div class="left">
+    {{ruffleItem}}
+  </div>
+  <div class="right">
+    <svg (click)="onEditMode()" class="circle" [class.active]="editMode" style="padding: 3px;" xmlns="http://www.w3.org/2000/svg"
+      width="28" height="28" viewBox="0 0 24 24">
+      <path d="M3 17.25V21h3.75L17.81 9.94l-3.75-3.75L3 17.25zM20.71 7.04c.39-.39.39-1.02 0-1.41l-2.34-2.34c-.39-.39-1.02-.39-1.41 0l-1.83 1.83 3.75 3.75 1.83-1.83z" />
+      <path d="M0 0h24v24H0z" fill="none" />
+    </svg>
+  </div>
 </div>
-<div class="container">
-  <div class="left-menu">
-
-    <div class="add-user-form">
+<div class="left-menu">
+  <div class="left-menu-fix">
+    <div class="add-user-form" [class.hide]="!editMode">
       <div class="form-item">
         <span>Yarışmacı Adı: </span>
         <input #username type="text" placeholder="Yarışmacı Adı">
@@ -21,40 +28,44 @@
     <div class="user-list-info">
       Çekilişe Katılanlar ({{users.length}})
     </div>
-    <div class="user-list-container">
+    <div class="user-list-container" [class.edit-mode]="editMode">
       <div class="user-list">
         <div *ngFor="let user of users" class="user-item">
-          <div class="no">
-            {{user.no}}
+          <div class="user">
+            {{user.no}} {{user.name}}
           </div>
-          <div class="name">
-            {{user.name}}
-          </div>
+          <svg class="delete circle circle-mini" (click)="deleteItem(user)" xmlns="http://www.w3.org/2000/svg" width="24"
+            height="24" viewBox="0 0 24 24">
+            <path fill="white" d="M6 19c0 1.1.9 2 2 2h8c1.1 0 2-.9 2-2V7H6v12zM19 4h-3.5l-1-1h-5l-1 1H5v2h14V4z" />
+            <path d="M0 0h24v24H0z" fill="none" />
+          </svg>
         </div>
-      </div>
-    </div>
-  </div>
-
-  <div class="center">
-    Kaç Kişi Çekilişe girecek.
-    <input type="number">
-    Çekilişi yap
-  </div>
-  <div class="right-menu">
-    <div class="header">
-      KAZANANLAR
-    </div>
-    <div class="user-list winner">
-      <div class="user-item winner-item">
-        NG FOR
       </div>
     </div>
   </div>
 </div>
 
-  <!-- Kullanıcı Ekleme/Silme, başka çekilişe geçme durumu çalışmaz hale getirilmeli. -->
-  <!-- Çekilişe katılan kişi sayısı değiştirilemez -->
-  <!-- Kalan Kişi Sayısı -->
+<div class="center">
+  Kaç Kişi Çekilişe girecek.
+  <input type="number" [max]="users.length" min="1" value="1">
+  Çekilişi yap
+  <app-ruffle-button></app-ruffle-button>
+</div>
+<div class="right-menu">
+  <div class="header">
+    KAZANANLAR
+  </div>
+  <div class="user-list winner">
+    <div class="user-item winner-item">
+      NG FOR
+    </div>
+  </div>
+</div>
+<!-- </div> -->
+
+<!-- Kullanıcı Ekleme/Silme, başka çekilişe geçme durumu çalışmaz hale getirilmeli. -->
+<!-- Çekilişe katılan kişi sayısı değiştirilemez -->
+<!-- Kalan Kişi Sayısı -->
 
 <!-- <div class="user-add-form">
   <input type="text" placeholder="Yarışmacı Adı">

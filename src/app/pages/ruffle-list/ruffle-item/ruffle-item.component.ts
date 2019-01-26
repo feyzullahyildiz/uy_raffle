@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
-import { ActivatedRouteSnapshot, ActivatedRoute } from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-ruffle-item',
@@ -10,7 +10,8 @@ export class RuffleItemComponent implements OnInit {
 
   constructor(public activatedRoute: ActivatedRoute) { }
   ruffleItem
-  users
+  users: Array<any>
+  editMode = false
   @ViewChild('username') userNameElement: ElementRef;
   @ViewChild('userno') userNoElement: ElementRef;
   ngOnInit() {
@@ -22,9 +23,16 @@ export class RuffleItemComponent implements OnInit {
   addUser(){
     const name = this.userNameElement.nativeElement.value
     const no = this.userNoElement.nativeElement.value
-    console.log('name', name, no)
-    this.users = [...this.users, {name, no}]
-    localStorage.setItem(this.ruffleItem, JSON.stringify(this.users))
+    if(no && name){
+      if(this.users.find(user => user.no === no) === undefined){
+        this.users = [...this.users, {name, no}]
+        localStorage.setItem(this.ruffleItem, JSON.stringify(this.users))
+      }else{
+        alert('Aynı karne numaralı kişi zaten girildi.')
+      }
+    }else{
+      alert('Karne numarası veya isim bulunamadı')
+    }
   }
 
   getUsers(){
@@ -42,8 +50,20 @@ export class RuffleItemComponent implements OnInit {
       json = []
     }
     this.users = json
-    console.log(json)
     return this.users
   }
-
+  onEditMode(){
+    this.editMode = !this.editMode
+  }
+  deleteItem(user: any){
+    const index = this.users.indexOf(user)
+    if(index !== -1){
+      if(window.confirm('Kullanıcı Siliniyor')){
+        this.users.splice(index, 1)
+        localStorage.setItem(this.ruffleItem, JSON.stringify(this.users))
+      }
+    }else{
+      alert('Katılımcı bulanamadı')
+    }
+  }
 }

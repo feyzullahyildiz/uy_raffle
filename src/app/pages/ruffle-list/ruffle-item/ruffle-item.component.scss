@@ -1,8 +1,5 @@
 @import '../../../global.scss';
 :host {
-    // display: flex;
-    // flex: 1;
-    display: flex;
     background-color: white;
     position: absolute;
     bottom: 0;
@@ -10,34 +7,45 @@
     left: 0;
     right: 0;
     margin-left: 8px;
-    flex-direction: column;
+    display: grid;
+    grid-template-areas: "header header header" "left center right";
+    grid-template-rows: auto 1fr;
+    grid-template-columns: 2fr 1fr 2fr;
+    // grid-gap: 4px;
+    grid-column-gap: 4px;
     .ruffle-name {
         padding: 16px;
         background-color: $primary;
         font-weight: 600;
         font-size: larger;
         color: white;
-    }
-    .container {
+        grid-area: header;
         display: flex;
-        // & > div {
-        //     margin: 8px;
-        //     background-color: red;
-        // }
-        flex: 1;
-        display: grid;
-        grid-template-columns: 2fr 1fr 2fr;
-        grid-gap: 8px;
-        .left-menu {
+        justify-content: space-between;
+        .right {
             display: flex;
-            flex-direction: column;
-            flex: 2;
-            padding: 8px;
-            // justify-content: center;
-            // align-items: center;
+
+        }
+        .leftt {
+
+        }
+    }
+    .left-menu {
+        position: relative;
+        .left-menu-fix {
+            position: absolute;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            top: 0;
+            grid-area: left;
+            display: grid;
+            grid-template-rows: auto auto 1fr;
+            grid-gap: 0;
             .add-user-form {
                 display: flex;
                 flex-direction: column;
+                margin-top: 8px;
                 .form-item {
                     display: flex;
                     justify-content: space-between;
@@ -57,13 +65,23 @@
                         justify-content: flex-end;
                     }
                 }
+                &.hide {
+                    display: none;
+                }
             }
             .user-list-info {
+                text-align: center;
+                font-size: large;
+                background-color: $secondary;
+                color: white;
+                // margin-top: 8px;
+                padding: 8px 0;
 
             }
             .user-list-container {
                 overflow: auto;
-                flex: 1;
+                justify-self: stretch;
+                // margin: 8px 0;
                 .user-list {
                     display: flex;
                     flex-direction: column;
@@ -72,32 +90,49 @@
                         background-color: $primary;
                         color: white;
                         padding: 8px;
+                        justify-content: space-between;
+                        align-items: center;
                         &:nth-child(even) {
                             background-color: lighten($color: $primary, $amount: 10);
                         }
-                        .no {
+                        .user {
                             padding: 0 8px;
+                            word-break: break-all;
+                            flex: 1;
                         }
-                        .name {
-                            flex: 1;    
+                        svg.delete {
+                            display: none;
+
                         }
                     }
                 }
+                &.edit-mode .user-list .user-item svg.delete{
+                    display: block;
+                }
             }
         }
-        .center {
-            justify-content: center;
-            align-items: center;
-            flex: 1;
-            
+    }
+    .center {
+        grid-area: center;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        input[type=number]{
+            font-size: large;
+            font-weight: 600;
+            width: 50px;
+            text-align: center;
         }
-        .right-menu {
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            flex: 2;
-        }
+    }
+    .right-menu {
+        grid-area: right;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        flex: 2;
+    }
 
     }
     .button-primary {
@@ -108,12 +143,27 @@
         outline: none;
         border: none;
         transition: background-color .3s ease-out;
-        // &:hover {
-        //     background-color: $primaryLight;
-        // }
         &:active {
             background-color: $primaryDark;
 
         }
+}
+svg.circle {
+    fill: white;
+    cursor: pointer;
+    border-radius: 50%;
+    box-sizing: border-box;
+    transition: background-color .3s ease-out;
+    margin-left: 4px;
+    &.active {
+        background-color: white !important;
+        fill: $primary;
+    }
+    &:hover {
+        background-color: $primaryLight;
+    }
+    &.circle-mini {
+        box-sizing: border-box;
+        padding: 3px;
     }
 }
