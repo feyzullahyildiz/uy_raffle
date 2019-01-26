@@ -1,0 +1,23 @@
+@import '../../global.scss';
+:host {
+
+
+    button {
+        width: 200px;
+        height: 200px;
+        border-radius: 50%;
+        background-color: $secondary;
+        outline: none;
+        border: none;
+        transition: background-color .3s ease-out;
+        font-size: larger;
+        font-weight: 600;
+        color: white;
+        &:hover {
+            background-color: $secondaryLight;            
+        }
+        &:disabled {
+            background-color: grey;
+        }
+    }
+}

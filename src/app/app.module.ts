@@ -7,6 +7,8 @@ import { WelcomeComponent } from './pages/welcome/welcome.component';
 import { NumberRuffleComponent } from './pages/number-ruffle/number-ruffle.component';
 import { RuffleListComponent } from './pages/ruffle-list/ruffle-list.component';
 import { RuffleItemComponent } from './pages/ruffle-list/ruffle-item/ruffle-item.component';
+import { RuffleButtonComponent } from './pages/ruffle-button/ruffle-button.component';
+import { DescriptionComponent } from './pages/description/description.component';
 
 @NgModule({
   declarations: [
@@ -15,6 +17,8 @@ import { RuffleItemComponent } from './pages/ruffle-list/ruffle-item/ruffle-item
     WelcomeComponent,
     NumberRuffleComponent,
     RuffleItemComponent,
+    RuffleButtonComponent,
+    DescriptionComponent,
   ],
   imports: [
     BrowserModule,

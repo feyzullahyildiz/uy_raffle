@@ -1,3 +1,119 @@
+@import '../../../global.scss';
 :host {
+    // display: flex;
+    // flex: 1;
     display: flex;
+    background-color: white;
+    position: absolute;
+    bottom: 0;
+    top: 0;
+    left: 0;
+    right: 0;
+    margin-left: 8px;
+    flex-direction: column;
+    .ruffle-name {
+        padding: 16px;
+        background-color: $primary;
+        font-weight: 600;
+        font-size: larger;
+        color: white;
+    }
+    .container {
+        display: flex;
+        // & > div {
+        //     margin: 8px;
+        //     background-color: red;
+        // }
+        flex: 1;
+        display: grid;
+        grid-template-columns: 2fr 1fr 2fr;
+        grid-gap: 8px;
+        .left-menu {
+            display: flex;
+            flex-direction: column;
+            flex: 2;
+            padding: 8px;
+            // justify-content: center;
+            // align-items: center;
+            .add-user-form {
+                display: flex;
+                flex-direction: column;
+                .form-item {
+                    display: flex;
+                    justify-content: space-between;
+                    margin-bottom: 8px;
+                    span {
+                        flex: 1;
+                        font-weight: 600;
+                        font-size: small;
+                    }
+                    input {
+                        flex: 2;
+                        font-weight: 600;
+                        font-size: small;
+                    }
+                    &.pull-right {
+                        // display: flex;
+                        justify-content: flex-end;
+                    }
+                }
+            }
+            .user-list-info {
+
+            }
+            .user-list-container {
+                overflow: auto;
+                flex: 1;
+                .user-list {
+                    display: flex;
+                    flex-direction: column;
+                    .user-item {
+                        display: flex;
+                        background-color: $primary;
+                        color: white;
+                        padding: 8px;
+                        &:nth-child(even) {
+                            background-color: lighten($color: $primary, $amount: 10);
+                        }
+                        .no {
+                            padding: 0 8px;
+                        }
+                        .name {
+                            flex: 1;    
+                        }
+                    }
+                }
+            }
+        }
+        .center {
+            justify-content: center;
+            align-items: center;
+            flex: 1;
+            
+        }
+        .right-menu {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            flex: 2;
+        }
+
+    }
+    .button-primary {
+        background-color: $primary;
+        padding: 8px 16px;
+        color: white;
+        font-size: medium;
+        outline: none;
+        border: none;
+        transition: background-color .3s ease-out;
+        // &:hover {
+        //     background-color: $primaryLight;
+        // }
+        &:active {
+            background-color: $primaryDark;
+
+        }
+    }
 }

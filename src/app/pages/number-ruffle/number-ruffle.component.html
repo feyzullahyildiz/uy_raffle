@@ -29,7 +29,8 @@
       </div>
     </div>
     <div class="form-item">
-      <button class="ruffle" [disabled]="!success" (click)="ruffle()">Çekilişi Çek</button>
+      <!-- <button class="ruffle" [disabled]="!success" (click)="ruffle()">Çekilişi Çek</button> -->
+      <app-ruffle-button (click)="ruffle()" [disabled]="!success"></app-ruffle-button>
     </div>
   </div>
   <div class="result">
@@ -40,6 +41,6 @@
     </ul>
   </div>
 </div>
-<div class="description">
-    Bu çekiliş 2 sayı arasında istenilen miktarda çekiliş yapabilmeniz içindir.
-</div>
+<app-description>
+  Bu çekiliş 2 sayı arasında istenilen miktarda çekiliş yapabilmeniz içindir.
+</app-description>

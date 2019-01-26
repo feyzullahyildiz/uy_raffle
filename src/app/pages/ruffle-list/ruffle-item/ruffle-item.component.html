@@ -1,5 +1,62 @@
 
-<div class="user-add-form">
+<div class="ruffle-name">
+  {{ruffleItem}}
+</div>
+<div class="container">
+  <div class="left-menu">
+
+    <div class="add-user-form">
+      <div class="form-item">
+        <span>Yarışmacı Adı: </span>
+        <input #username type="text" placeholder="Yarışmacı Adı">
+      </div>
+      <div class="form-item">
+        <span>Karne No: </span>
+        <input #userno type="number" placeholder="Yarışmacı Karne Numarası">
+      </div>
+      <div class="form-item pull-right">
+        <button class="button-primary" (click)="addUser()"> Yarışmacıyı Listeye Ekle</button>
+      </div>
+    </div>
+    <div class="user-list-info">
+      Çekilişe Katılanlar ({{users.length}})
+    </div>
+    <div class="user-list-container">
+      <div class="user-list">
+        <div *ngFor="let user of users" class="user-item">
+          <div class="no">
+            {{user.no}}
+          </div>
+          <div class="name">
+            {{user.name}}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="center">
+    Kaç Kişi Çekilişe girecek.
+    <input type="number">
+    Çekilişi yap
+  </div>
+  <div class="right-menu">
+    <div class="header">
+      KAZANANLAR
+    </div>
+    <div class="user-list winner">
+      <div class="user-item winner-item">
+        NG FOR
+      </div>
+    </div>
+  </div>
+</div>
+
+  <!-- Kullanıcı Ekleme/Silme, başka çekilişe geçme durumu çalışmaz hale getirilmeli. -->
+  <!-- Çekilişe katılan kişi sayısı değiştirilemez -->
+  <!-- Kalan Kişi Sayısı -->
+
+<!-- <div class="user-add-form">
   <input type="text" placeholder="Yarışmacı Adı">
   <input type="text" placeholder="Yarışmacı Karne Numarası">
   <button (click)="addUser()"> Yarışmacıyı Listeye Ekle</button>
@@ -11,10 +68,9 @@
 
   <button>Çekilişe Başla</button>
   <span>Kalan çekiliş sayısı</span>
-  <!-- Kullanıcı Ekleme/Silme, başka çekilişe geçme durumu çalışmaz hale getirilmeli. -->
-  <!-- Çekilişe katılan kişi sayısı değiştirilemez -->
-  
 
   
 
-</div>
+  
+
+</div> -->

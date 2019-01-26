@@ -1,0 +1,12 @@
+@import '../../global.scss';
+:host {
+    // .description {
+        background-color: $primary;
+        color: white;
+        display: flex;
+        justify-content: center;
+        flex: 1;
+        max-height: 50px;
+        align-items: center;
+    // }
+}

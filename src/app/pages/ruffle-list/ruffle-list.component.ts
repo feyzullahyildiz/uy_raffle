@@ -12,6 +12,7 @@ export class RuffleListComponent implements OnInit {
     this.refreshRuffleItems()
   }
 
+  editMode = false
   items: Array<string>
   refreshRuffleItems(){
     let arr = localStorage.getItem(LIST_KEY)
@@ -58,7 +59,13 @@ export class RuffleListComponent implements OnInit {
       }
     }
   }
+  selectedChildRouteLink = ''
   setRuffleItem(item){
+    this.selectedChildRouteLink = item
     this.router.navigate([item], {relativeTo: this.activatedRoute})
+  }
+
+  onEditMode(){
+    this.editMode = !this.editMode;
   }
 }

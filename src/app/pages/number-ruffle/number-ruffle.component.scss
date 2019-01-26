@@ -22,6 +22,8 @@
                 flex-direction: column;
                 input {
                     font-size: inherit;
+                    text-align: center;
+                    width: 155px;
                 }
             }
         }
@@ -34,6 +36,8 @@
 
             .info {
                 // opacity: .5;
+                display: flex;
+                align-items: center;
                 height: 50px;
                 .message {
                     font-weight: 600;
@@ -46,16 +50,5 @@
             overflow: auto;
             flex: 1;
         }
-    }
-    .description {
-        background-color: lighten($primary, 10%);
-        color: $primaryText;
-        display: flex;
-        justify-content: center;
-        flex: 1;
-        max-height: 50px;
-        align-items: center;
-
-        
     }
 }
