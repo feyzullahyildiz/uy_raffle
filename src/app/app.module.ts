@@ -4,20 +4,20 @@ import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { WelcomeComponent } from './pages/welcome/welcome.component';
-import { NumberRuffleComponent } from './pages/number-ruffle/number-ruffle.component';
-import { RuffleListComponent } from './pages/ruffle-list/ruffle-list.component';
-import { RuffleItemComponent } from './pages/ruffle-list/ruffle-item/ruffle-item.component';
-import { RuffleButtonComponent } from './pages/ruffle-button/ruffle-button.component';
+import { NumberRaffleComponent } from './pages/number-raffle/number-raffle.component';
+import { RaffleListComponent } from './pages/raffle-list/raffle-list.component';
+import { RaffleItemComponent } from './pages/raffle-list/raffle-item/raffle-item.component';
+import { RaffleButtonComponent } from './pages/raffle-button/raffle-button.component';
 import { DescriptionComponent } from './pages/description/description.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    RuffleListComponent,
+    RaffleListComponent,
     WelcomeComponent,
-    NumberRuffleComponent,
-    RuffleItemComponent,
-    RuffleButtonComponent,
+    NumberRaffleComponent,
+    RaffleItemComponent,
+    RaffleButtonComponent,
     DescriptionComponent,
   ],
   imports: [

@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { RuffleButtonComponent } from './ruffle-button.component';
+import { RaffleButtonComponent } from './raffle-button.component';
 
-describe('RuffleButtonComponent', () => {
-  let component: RuffleButtonComponent;
-  let fixture: ComponentFixture<RuffleButtonComponent>;
+describe('RaffleButtonComponent', () => {
+  let component: RaffleButtonComponent;
+  let fixture: ComponentFixture<RaffleButtonComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ RuffleButtonComponent ]
+      declarations: [ RaffleButtonComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(RuffleButtonComponent);
+    fixture = TestBed.createComponent(RaffleButtonComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

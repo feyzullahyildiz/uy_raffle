@@ -3,18 +3,18 @@ import { Router, ActivatedRoute } from '@angular/router';
 const LIST_KEY = 'list_key'
 @Component({
   selector: 'app-user-list',
-  templateUrl: './ruffle-list.component.html',
-  styleUrls: ['./ruffle-list.component.scss']
+  templateUrl: './raffle-list.component.html',
+  styleUrls: ['./raffle-list.component.scss']
 })
-export class RuffleListComponent implements OnInit {
+export class RaffleListComponent implements OnInit {
   constructor(public router: Router, public activatedRoute: ActivatedRoute) { }
   ngOnInit() { 
-    this.refreshRuffleItems()
+    this.refreshRaffleItems()
   }
 
   editMode = false
   items: Array<string>
-  refreshRuffleItems(){
+  refreshRaffleItems(){
     let arr = localStorage.getItem(LIST_KEY)
     try {
       const json = JSON.parse(arr)
@@ -32,16 +32,16 @@ export class RuffleListComponent implements OnInit {
   updateLocalStorage(){
     localStorage.setItem(LIST_KEY, JSON.stringify(this.items))
   }
-  addRuffleItem(){
+  addRaffleItem(){
     const name = window.prompt('Çekilişe özel benzersiz bir ad giriniz.')
     if(!name){
       return
     }
     console.log('this.items', this.items)
-    this.refreshRuffleItems()
+    this.refreshRaffleItems()
     if(this.items.indexOf(name) === -1){
       localStorage.setItem(LIST_KEY, JSON.stringify([...this.items, name]))
-      this.refreshRuffleItems()
+      this.refreshRaffleItems()
     } else{
       alert('Bu isimde bir çekiliş zaten bulunuyor. Başka bir isim giriniz veya öncekini siliniz.')
     }
@@ -61,7 +61,7 @@ export class RuffleListComponent implements OnInit {
     }
   }
   selectedChildRouteLink = ''
-  setRuffleItem(item){
+  setRaffleItem(item){
     this.selectedChildRouteLink = item
     this.router.navigate([item], {relativeTo: this.activatedRoute})
   }

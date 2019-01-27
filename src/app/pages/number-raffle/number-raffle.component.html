@@ -6,31 +6,31 @@
     <div class="form-item">
       <div class="form-item-title"> Başlangıç Sayısı</div>
       <div class="form-item-text">
-        <input #ruffleStartElement (input)="startValue($event)" type="number" value="0">
+        <input #raffleStartElement (input)="startValue($event)" type="number" value="0">
       </div>
     </div>
     <div class="form-item">
       <div class="form-item-title"> Bitiş Sayısı</div>
       <div class="form-item-text">
-        <input #ruffleEndElement (input)="endValue($event)" type="number" value="0">
+        <input #raffleEndElement (input)="endValue($event)" type="number" value="0">
       </div>
     </div>
     <div class="form-item">
       <div class="form-item-title"> Toplam Çekiliş</div>
       <div class="form-item-text">
-        <input #ruffleTotalElement (input)="countValue($event)" type="number" value="0">
+        <input #raffleTotalElement (input)="countValue($event)" type="number" value="0">
       </div>
     </div>
   </div>
-  <div class="ruffle-container">
+  <div class="raffle-container">
     <div class="info">
       <div class="message">
         {{message}}
       </div>
     </div>
     <div class="form-item">
-      <!-- <button class="ruffle" [disabled]="!success" (click)="ruffle()">Çekilişi Çek</button> -->
-      <app-ruffle-button (click)="ruffle()" [disabled]="!success"></app-ruffle-button>
+      <!-- <button class="raffle" [disabled]="!success" (click)="raffle()">Çekilişi Çek</button> -->
+      <app-raffle-button (click)="raffle()" [disabled]="!success"></app-raffle-button>
     </div>
   </div>
   <div class="result">

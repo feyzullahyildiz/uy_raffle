@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'app-number-ruffle',
-  templateUrl: './number-ruffle.component.html',
-  styleUrls: ['./number-ruffle.component.scss']
+  selector: 'app-number-raffle',
+  templateUrl: './number-raffle.component.html',
+  styleUrls: ['./number-raffle.component.scss']
 })
-export class NumberRuffleComponent implements OnInit {
+export class NumberRaffleComponent implements OnInit {
   constructor() { }
   ngOnInit() { }
 
@@ -74,7 +74,7 @@ export class NumberRuffleComponent implements OnInit {
     this.count = val
     this.checkNumbers()
   }
-  ruffle() {
+  raffle() {
     const arr = this.getRandomNumbers()
     this.resultArray = arr
   }

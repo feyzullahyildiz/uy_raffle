@@ -1,6 +1,6 @@
-<div class="ruffle-name">
+<div class="raffle-name">
   <div class="left">
-    {{ruffleItem}}
+    {{raffleItem}}
   </div>
   <div class="right">
     <svg (click)="onEditMode()" class="circle" [class.active]="editMode" style="padding: 3px;" xmlns="http://www.w3.org/2000/svg"
@@ -47,9 +47,11 @@
 
 <div class="center">
   Kaç Kişi Çekilişe girecek.
-  <input type="number" [max]="users.length" min="1" value="1">
-  Çekilişi yap
-  <app-ruffle-button></app-ruffle-button>
+  <input (keyup)="raffleCountChange($event)" type="number" [max]="users.length" min="1" [value]="raffleCount">
+  <app-raffle-button [disabled]="isRaffleStarted" (click)="startRaffle()"></app-raffle-button>
+  <div class="info">
+    Kalan Çekiliş Sayısı: 5
+  </div>
 </div>
 <div class="right-menu">
   <div class="header">
@@ -73,7 +75,7 @@
   <button (click)="addUser()"> Yarışmacıyı Listeye Ekle</button>
 </div>
 
-<div class="ruffle-menu">
+<div class="raffle-menu">
 
   <input type="number" placeholder="Kaç kişi çekiliş yapılacak">
 

@@ -1,9 +1,9 @@
 <div class="container">
-    <div class="ruffle-list-container">
+    <div class="raffle-list-container">
         <div class="header">
             <span class="title">Çekiliş Listeleri</span>
             <div class="right">
-                <svg *ngIf="editMode" class="add" (click)="addRuffleItem()" xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24">
+                <svg *ngIf="editMode" class="add" (click)="addRaffleItem()" xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24">
                     <path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"/><path d="M0 0h24v24H0z" fill="none"/>
                 </svg>
                 <svg (click)="onEditMode()" [class.active]="editMode" style="padding: 3px;" xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24">
@@ -12,8 +12,8 @@
                 </svg>
             </div>
         </div>
-        <div class="ruffle-list">
-            <div (click)="setRuffleItem(item)" [ngClass]="{active: selectedChildRouteLink === item}" class="ruffle-item" *ngFor="let item of this.items">
+        <div class="raffle-list">
+            <div (click)="setRaffleItem(item)" [ngClass]="{active: selectedChildRouteLink === item}" class="raffle-item" *ngFor="let item of this.items">
                 <a class="text">
                         {{item}}
                 </a>

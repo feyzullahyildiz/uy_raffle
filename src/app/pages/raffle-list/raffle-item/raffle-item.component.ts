@@ -2,22 +2,25 @@ import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 
 @Component({
-  selector: 'app-ruffle-item',
-  templateUrl: './ruffle-item.component.html',
-  styleUrls: ['./ruffle-item.component.scss']
+  selector: 'app-raffle-item',
+  templateUrl: './raffle-item.component.html',
+  styleUrls: ['./raffle-item.component.scss']
 })
-export class RuffleItemComponent implements OnInit {
+export class RaffleItemComponent implements OnInit {
 
   constructor(public activatedRoute: ActivatedRoute) { }
-  ruffleItem
+  raffleItem
   users: Array<any>
   editMode = false
+  raffleCount = 1
+  isRaffleStarted;
   @ViewChild('username') userNameElement: ElementRef;
   @ViewChild('userno') userNoElement: ElementRef;
   ngOnInit() {
-    this.activatedRoute.params.subscribe(ruffleItem => {
-      this.ruffleItem = ruffleItem.rufflename
+    this.activatedRoute.params.subscribe(raffleItem => {
+      this.raffleItem = raffleItem.rafflename
       this.getUsers()
+      this.isRaffleStarted = false
     })
   }
   addUser(){
@@ -26,7 +29,7 @@ export class RuffleItemComponent implements OnInit {
     if(no && name){
       if(this.users.find(user => user.no === no) === undefined){
         this.users = [...this.users, {name, no}]
-        localStorage.setItem(this.ruffleItem, JSON.stringify(this.users))
+        localStorage.setItem(this.raffleItem, JSON.stringify(this.users))
       }else{
         alert('Aynı karne numaralı kişi zaten girildi.')
       }
@@ -36,7 +39,7 @@ export class RuffleItemComponent implements OnInit {
   }
 
   getUsers(){
-    const arr = localStorage.getItem(this.ruffleItem)
+    const arr = localStorage.getItem(this.raffleItem)
     let json
     try {
       json = JSON.parse(arr)
@@ -60,10 +63,23 @@ export class RuffleItemComponent implements OnInit {
     if(index !== -1){
       if(window.confirm('Kullanıcı Siliniyor')){
         this.users.splice(index, 1)
-        localStorage.setItem(this.ruffleItem, JSON.stringify(this.users))
+        localStorage.setItem(this.raffleItem, JSON.stringify(this.users))
       }
     }else{
       alert('Katılımcı bulanamadı')
     }
+  }
+  raffleCountChange(event: any){
+    const value = +event.target.value
+    // console.log('here', value)
+    if(value >= this.users.length && this.users.length > 1){
+      this.raffleCount = this.users.length -1
+      console.log('degisti', this.raffleCount)
+    }else if(value < 1){
+      this.raffleCount = 1;
+    }
+  }
+  startRaffle(){
+    this.isRaffleStarted = true;
   }
 }
