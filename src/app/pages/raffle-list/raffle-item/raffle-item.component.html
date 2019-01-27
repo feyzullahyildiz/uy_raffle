@@ -10,8 +10,8 @@
     </svg>
   </div>
 </div>
-<div class="left-menu">
-  <div class="left-menu-fix">
+<div class="left menu">
+  <div class="menu-fix">
     <div class="add-user-form" [class.hide]="!editMode">
       <div class="form-item">
         <span>Yarışmacı Adı: </span>
@@ -26,7 +26,7 @@
       </div>
     </div>
     <div class="user-list-info">
-      Çekilişe Katılanlar ({{users.length}})
+      ÇEKİLİŞE KATILANLAR ({{users.length}})
     </div>
     <div class="user-list-container" [class.edit-mode]="editMode">
       <div class="user-list">
@@ -46,20 +46,40 @@
 </div>
 
 <div class="center">
-  Kaç Kişi Çekilişe girecek.
-  <input (keyup)="raffleCountChange($event)" type="number" [max]="users.length" min="1" [value]="raffleCount">
-  <app-raffle-button [disabled]="isRaffleStarted" (click)="startRaffle()"></app-raffle-button>
-  <div class="info">
-    Kalan Çekiliş Sayısı: 5
+  <div class="top-container" [class.swipe-top]="isRaffleStarted">
+    <app-raffle-button [topSquare]="isRaffleStarted" [active]="isRaffleStarted" (click)="startRaffle()">
+      {{isRaffleStarted ? 'Çekilişi Durdur' : 'Çekilişi Başlat'}}
+    </app-raffle-button>
+    <div class="info" *ngIf="!isRaffleStarted">
+      Kaç Kişi Çekilişe girecek.
+      <input (keyup)="raffleCountChange($event)" type="number" [max]="users.length" min="1" [value]="raffleCount">
+    </div>
+  </div>
+  <div (click)="raffle()" class="center-container" [class.swipe-from-bottom]="isRaffleStarted">
+    Rastgele!!!
+  </div>
+  <div class="bottom-container" [class.swipe-from-bottom]="isRaffleStarted">
+    <div class="empty"></div>
+    <div #raffleCountLeftElement class="rotateable rotate" style="font-size: xx-large">{{raffleCountLeft}}</div>
+    <div>
+        KALAN ÇEKİLİŞ SAYISI
+    </div>
   </div>
 </div>
-<div class="right-menu">
-  <div class="header">
-    KAZANANLAR
-  </div>
-  <div class="user-list winner">
-    <div class="user-item winner-item">
-      NG FOR
+<div class="right menu">
+  <div class="menu-fix">
+      <div class="user-list-info">
+          KAZANANLAR
+        </div>
+    <div class="user-list-container">
+
+      <div class="user-list winner">
+        <div class="user-item winner-item" *ngFor="let user of winnerList">
+            <div class="user">
+                {{user.no}} {{user.name}}
+              </div>
+        </div>
+      </div>
     </div>
   </div>
 </div>

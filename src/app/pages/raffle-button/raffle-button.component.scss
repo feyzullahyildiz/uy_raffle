@@ -1,6 +1,8 @@
 @import '../../global.scss';
 :host {
-
+    display: flex;
+    align-items: center;
+    justify-content: center;
 
     button {
         width: 200px;
@@ -9,7 +11,7 @@
         background-color: $secondary;
         outline: none;
         border: none;
-        transition: background-color .3s ease-out;
+        transition: all .3s ease-out;
         font-size: larger;
         font-weight: 600;
         color: white;
@@ -19,6 +21,17 @@
         &:disabled {
             background-color: grey;
             transition: none;
+        }
+        &.active {
+            background-color: $primary;
+            // transition: none;
+            &:hover{
+                background-color: $primaryDark;
+            }
+        }
+        &.top-square {
+            border-top-left-radius: 0%;
+            border-top-right-radius: 0%;
         }
     }
 }

@@ -7,6 +7,8 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class RaffleButtonComponent implements OnInit {
   @Input() disabled;
+  @Input() active;
+  @Input() topSquare;
   constructor() { }
   ngOnInit() { }
   
