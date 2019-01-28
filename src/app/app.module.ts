@@ -9,6 +9,7 @@ import { RaffleListComponent } from './pages/raffle-list/raffle-list.component';
 import { RaffleItemComponent } from './pages/raffle-list/raffle-item/raffle-item.component';
 import { RaffleButtonComponent } from './pages/raffle-button/raffle-button.component';
 import { DescriptionComponent } from './pages/description/description.component';
+import { EmptyRaffleItemComponent } from './pages/raffle-list/empty-raffle-item/empty-raffle-item.component';
 
 @NgModule({
   declarations: [
@@ -19,6 +20,7 @@ import { DescriptionComponent } from './pages/description/description.component'
     RaffleItemComponent,
     RaffleButtonComponent,
     DescriptionComponent,
+    EmptyRaffleItemComponent,
   ],
   imports: [
     BrowserModule,

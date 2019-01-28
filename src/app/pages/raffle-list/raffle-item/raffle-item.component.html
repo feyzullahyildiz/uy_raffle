@@ -47,7 +47,7 @@
 
 <div class="center">
   <div class="top-container" [class.swipe-top]="isRaffleStarted">
-    <app-raffle-button [topSquare]="isRaffleStarted" [active]="isRaffleStarted" (click)="startRaffle()">
+    <app-raffle-button [disabled]="isRaffleEnd" [topSquare]="isRaffleStarted" [active]="isRaffleStarted" (click)="startRaffle()">
       {{isRaffleStarted ? 'Çekilişi Durdur' : 'Çekilişi Başlat'}}
     </app-raffle-button>
     <div class="info" *ngIf="!isRaffleStarted">

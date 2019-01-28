@@ -18,6 +18,7 @@ export class RaffleItemComponent implements OnInit {
   raffleCountLeft = 0;
   usersClone
   winnerList
+  isRaffleEnd = false
   @ViewChild('username') userNameElement: ElementRef;
   @ViewChild('userno') userNoElement: ElementRef;
   ngOnInit() {
@@ -27,8 +28,9 @@ export class RaffleItemComponent implements OnInit {
       this.isRaffleStarted = false
       this.winnerList = []
       this.usersClone = []
+      this.raffleCountLeft = 0
+      this.isRaffleEnd = false
     })
-
   }
   addUser() {
     const name = this.userNameElement.nativeElement.value
@@ -111,9 +113,21 @@ export class RaffleItemComponent implements OnInit {
       const user = this.users[random]
       this.users.splice(random, 1)
       this.winnerList.unshift(user)
+      this.raffleCountLeft--
       this.restartRaffleCountLeftAnim()
       console.log('random', random)
+      if(this.raffleCountLeft === 0){
+        this.reset()
+        this.isRaffleEnd = true
+      }
     }
-
+  }
+  reset(){
+    this.getUsers()
+    // this.users
+    this.isRaffleStarted = false
+    // this.winnerList = []
+    this.usersClone = []
+    this.raffleCountLeft = 0
   }
 }
