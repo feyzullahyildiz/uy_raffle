@@ -8,13 +8,17 @@
     left: 0;
     right: 0;
     .form {
-        display: flex;
-        flex-direction: column;
+        display: grid;
+        grid-template-columns: 2fr 1fr 2fr;
+        // display: flex;
+        // flex-direction: row;
         flex: 1;
-        padding-top: 24px;
+        // padding-top: 24px;
         .input-list {
             display: flex;
+            flex-direction: column;
             justify-content: space-evenly;
+
             .form-item {
                 font-size: larger;
                 display: flex;
@@ -39,16 +43,53 @@
                 display: flex;
                 align-items: center;
                 height: 50px;
-                .message {
-                    font-weight: 600;
-                    font-size: larger;
-                }
+  
             }
         }
         .result {
             display: flex;
+            flex-direction: column;
             overflow: auto;
             flex: 1;
+            box-sizing: border-box;
+            ul {
+                list-style: none;
+                margin: 0;
+                padding: 0;
+                width: 100%;
+                position: relative;
+                overflow: auto;
+                box-sizing: border-box;
+                flex: 1;
+                li {
+                    box-sizing: border-box;
+                    font-weight: 600;
+                    font-size: x-large;
+                    background-color: $primary;
+                    width: 100%;
+                    padding: 0 16px;
+                    color: white;
+                    &:nth-child(even){
+                        background-color: lighten($color: $primary, $amount: 10);
+                    }
+                }
+            }
         }
+    }
+    .message {
+        font-weight: 600;
+        font-size: 45px;
+        display: flex;
+        justify-content: center;
+        min-height: 80px;
+    }
+    .button-primary {
+        background-color: $secondary;
+        font-weight: 600;
+        font-size: x-large;
+        padding: 12px 4px;
+        color: white;
+        box-sizing: border-box;
+
     }
 }

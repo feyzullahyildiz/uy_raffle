@@ -1,4 +1,6 @@
-
+<div class="message">
+    {{message}}
+  </div>
 <div class="form">
 
   <div class="input-list">
@@ -6,33 +8,34 @@
     <div class="form-item">
       <div class="form-item-title"> Başlangıç Sayısı</div>
       <div class="form-item-text">
-        <input #raffleStartElement (input)="startValue($event)" type="number" value="0">
+        <input #raffleStartElement (input)="startValue($event)" type="number" value="0" min="1">
       </div>
     </div>
     <div class="form-item">
       <div class="form-item-title"> Bitiş Sayısı</div>
       <div class="form-item-text">
-        <input #raffleEndElement (input)="endValue($event)" type="number" value="0">
+        <input #raffleEndElement (input)="endValue($event)" type="number" value="0" min="1">
       </div>
     </div>
     <div class="form-item">
       <div class="form-item-title"> Toplam Çekiliş</div>
       <div class="form-item-text">
-        <input #raffleTotalElement (input)="countValue($event)" type="number" value="0">
+        <input #raffleTotalElement (input)="countValue($event)" type="number" value="0" min="1">
       </div>
     </div>
   </div>
   <div class="raffle-container">
     <div class="info">
-      <div class="message">
+      <!-- <div class="message">
         {{message}}
-      </div>
+      </div> -->
     </div>
     <div class="form-item">
-      <app-raffle-button (click)="raffle()" [disabled]="!success">Çekilişi Başlat</app-raffle-button>
+      <app-raffle-button (click)="raffle()" [disabled]="!success || isRaffleStarted">Çekilişi Başlat</app-raffle-button>
     </div>
   </div>
   <div class="result">
+    <button *ngIf="isRaffleStarted" (click)="downloadResult()" class="button-primary">Sırala ve İndir</button>
     <ul>
       <li *ngFor="let res of resultArray">
         {{res}}

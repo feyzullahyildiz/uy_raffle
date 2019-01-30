@@ -1,0 +1,26 @@
+@import '../../global.scss';
+$linear: 100%;
+:host{
+    position: fixed;
+    right: -$linear;
+    width: $linear;
+    height: 80%;
+    margin: auto;
+    // display: none;
+    background-color: $secondary;
+    font-weight: 600;
+    font-size: 70px;
+    transition: all 1s linear;
+    z-index: 1000;
+    color: white;
+
+    justify-content: space-evenly;
+    align-items: center;
+    display: flex;
+    &.active {
+        right: 0;
+        // left: 0;
+    }
+
+
+}

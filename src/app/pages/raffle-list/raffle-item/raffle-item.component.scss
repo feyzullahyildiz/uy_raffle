@@ -63,6 +63,20 @@
                         // display: flex;
                         justify-content: flex-end;
                     }
+                    label {
+                        position: relative;
+                        cursor: pointer;
+                        overflow: hidden;
+                        margin-right: 4px;
+                        input[type=file] {
+                            position: absolute;
+                            opacity: 0;
+                            top: 0;
+                            bottom: 0;
+                            right: 0;
+                            left: 0;
+                        }
+                    }
                 }
                 &.hide {
                     display: none;
@@ -73,8 +87,15 @@
                 font-size: large;
                 background-color: $secondary;
                 color: white;
-                padding: 8px 0;
-
+                padding: 4px 16px;
+                box-sizing: border-box;
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                .right {
+                    display: flex;
+                    align-items: center;
+                }
             }
             .user-list-container {
                 overflow: auto;
@@ -299,6 +320,11 @@ svg.circle {
     &:hover {
         background-color: $primaryLight;
     }
+    
+    &.secondary:hover {
+        background-color: lighten($color: $secondary, $amount: 10);
+    }
+
     &.circle-mini {
         box-sizing: border-box;
         padding: 3px;

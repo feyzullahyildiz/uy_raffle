@@ -1,0 +1,27 @@
+:host {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    .container {
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        right: 0;
+        left: 0;
+        display: flex;
+        img {
+            // flex: 1;
+            margin: auto;
+            height: 80%;
+        }
+        // p {
+        //     margin: 0 auto;
+        //     position: absolute;
+        //     font-weight: 600;
+        //     font-size: 40px;
+        //     color: black;
+        // }
+    }
+}

@@ -13,7 +13,7 @@
             </div>
         </div>
         <div class="raffle-list">
-            <div (click)="setRaffleItem(item)" [ngClass]="{active: selectedChildRouteLink === item}" class="raffle-item" *ngFor="let item of this.items">
+            <div (click)="setRaffleItem(item)" [ngClass]="{active: selectedChildRouteLink === item}" class="raffle-item" *ngFor="let item of this.dataService.getRaffleItems()">
                 <a class="text">
                         {{item}}
                 </a>

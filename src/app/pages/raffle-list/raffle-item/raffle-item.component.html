@@ -14,25 +14,46 @@
   <div class="menu-fix">
     <div class="add-user-form" [class.hide]="!editMode">
       <div class="form-item">
+        <span>Karne No: </span>
+        <input #userno type="number" placeholder="Yarışmacı Karne Numarası">
+      </div>
+      <div class="form-item">
         <span>Yarışmacı Adı: </span>
         <input #username type="text" placeholder="Yarışmacı Adı">
       </div>
       <div class="form-item">
-        <span>Karne No: </span>
-        <input #userno type="number" placeholder="Yarışmacı Karne Numarası">
+        <span>Cami Adı: </span>
+        <input #mosque type="text" placeholder="Cami Adı">
       </div>
       <div class="form-item pull-right">
+        <label class="button-primary">
+          <input #inputFile type="file" accept=".csv"(change)="csvImport($event)"> TOPLU EKLE
+        </label>
         <button class="button-primary" (click)="addUser()"> Yarışmacıyı Listeye Ekle</button>
       </div>
     </div>
     <div class="user-list-info">
-      ÇEKİLİŞE KATILANLAR ({{users.length}})
+      <div>
+        ÇEKİLİŞE KATILANLAR ({{users.length}})
+      </div>
+      <div class="right">
+          <svg (click)="saveUserListCsv()" class="circle secondary" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+            <path d="M0 0h24v24H0z" fill="none"/>
+            <path fill="white" d="M17 3H5c-1.11 0-2 .9-2 2v14c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V7l-4-4zm-5 16c-1.66 0-3-1.34-3-3s1.34-3 3-3 3 1.34 3 3-1.34 3-3 3zm3-10H5V5h10v4z"/>
+            <title>Excel indir</title>
+          </svg>
+        <svg (click)="saveUserListClick()" class="circle secondary" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+          <path fill="white" d="M20.54 5.23l-1.39-1.68C18.88 3.21 18.47 3 18 3H6c-.47 0-.88.21-1.16.55L3.46 5.23C3.17 5.57 3 6.02 3 6.5V19c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V6.5c0-.48-.17-.93-.46-1.27zM12 17.5L6.5 12H10v-2h4v2h3.5L12 17.5zM5.12 5l.81-1h12l.94 1H5.12z"/>
+          <path d="M0 0h24v24H0z" fill="none"/>
+          <title>Listeye Kaydet</title>
+        </svg>
+      </div>
     </div>
     <div class="user-list-container" [class.edit-mode]="editMode">
       <div class="user-list">
         <div *ngFor="let user of users" class="user-item">
           <div class="user">
-            {{user.no}} {{user.name}}
+            {{user.no}} {{user.isim}}
           </div>
           <svg class="delete circle circle-mini" (click)="deleteItem(user)" xmlns="http://www.w3.org/2000/svg" width="24"
             height="24" viewBox="0 0 24 24">
@@ -46,6 +67,9 @@
 </div>
 
 <div class="center">
+  <!-- <div class="save-result-info" *ngIf="isRaffleEnd">
+    Kalanları ve Kazananları Kaydet
+  </div> -->
   <div class="top-container" [class.swipe-top]="isRaffleStarted">
     <app-raffle-button [disabled]="isRaffleEnd" [topSquare]="isRaffleStarted" [active]="isRaffleStarted" (click)="startRaffle()">
       {{isRaffleStarted ? 'Çekilişi Durdur' : 'Çekilişi Başlat'}}
@@ -69,20 +93,35 @@
 <div class="right menu">
   <div class="menu-fix">
       <div class="user-list-info">
+        <div>
           KAZANANLAR
         </div>
+        <div class="right">
+          <svg (click)="saveWinnerListCsv()" class="circle secondary" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+            <path d="M0 0h24v24H0z" fill="none"/>
+            <path fill="white" d="M17 3H5c-1.11 0-2 .9-2 2v14c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V7l-4-4zm-5 16c-1.66 0-3-1.34-3-3s1.34-3 3-3 3 1.34 3 3-1.34 3-3 3zm3-10H5V5h10v4z"/>
+            <title>Excel indir</title>
+          </svg>
+          <svg (click)="saveWinnerList()" class="circle secondary" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+            <path fill="white" d="M20.54 5.23l-1.39-1.68C18.88 3.21 18.47 3 18 3H6c-.47 0-.88.21-1.16.55L3.46 5.23C3.17 5.57 3 6.02 3 6.5V19c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V6.5c0-.48-.17-.93-.46-1.27zM12 17.5L6.5 12H10v-2h4v2h3.5L12 17.5zM5.12 5l.81-1h12l.94 1H5.12z"/>
+            <path d="M0 0h24v24H0z" fill="none"/>
+            <title>Listeye Kaydet</title>
+          </svg>
+        </div>
+      </div>
     <div class="user-list-container">
 
       <div class="user-list winner">
         <div class="user-item winner-item" *ngFor="let user of winnerList">
             <div class="user">
-                {{user.no}} {{user.name}}
-              </div>
+                {{user.no}} {{user.isim}}
+            </div>
         </div>
       </div>
     </div>
   </div>
 </div>
+<!-- <app-raffle-result-viewer [startObservable]="animationSubject"></app-raffle-result-viewer> -->
 <!-- </div> -->
 
 <!-- Kullanıcı Ekleme/Silme, başka çekilişe geçme durumu çalışmaz hale getirilmeli. -->

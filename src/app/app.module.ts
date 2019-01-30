@@ -10,6 +10,8 @@ import { RaffleItemComponent } from './pages/raffle-list/raffle-item/raffle-item
 import { RaffleButtonComponent } from './pages/raffle-button/raffle-button.component';
 import { DescriptionComponent } from './pages/description/description.component';
 import { EmptyRaffleItemComponent } from './pages/raffle-list/empty-raffle-item/empty-raffle-item.component';
+import { RaffleResultViewerComponent } from './pages/raffle-result-viewer/raffle-result-viewer.component';
+import { DataService } from './data.service';
 
 @NgModule({
   declarations: [
@@ -21,12 +23,15 @@ import { EmptyRaffleItemComponent } from './pages/raffle-list/empty-raffle-item/
     RaffleButtonComponent,
     DescriptionComponent,
     EmptyRaffleItemComponent,
+    RaffleResultViewerComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule
   ],
-  providers: [],
+  providers: [
+    {provide: DataService, useClass: DataService}
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
