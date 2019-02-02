@@ -66,6 +66,18 @@
             overflow: auto;
             flex: 1;
             box-sizing: border-box;
+            .result-container {
+                flex: 1;
+                position: relative;
+                .scrollable{
+                    position: absolute;
+                    bottom: 0;
+                    top: 0;
+                    left: 0;
+                    right: 0; 
+                    overflow: auto;
+                }
+            }
             ul {
                 list-style: none;
                 margin: 0;

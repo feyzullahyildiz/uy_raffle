@@ -36,11 +36,16 @@
   </div>
   <div class="result">
     <button *ngIf="isRaffleStarted" (click)="downloadResult()" class="button-primary">Sırala ve İndir ({{resultArray.length}})</button>
-    <ul>
-      <li *ngFor="let res of resultArray">
-        {{res}}
-      </li>
-    </ul>
+    <div class="result-container">
+      <div class="scrollable">
+
+        <ul>
+          <li *ngFor="let res of resultArray">
+            {{res}}
+          </li>
+        </ul>
+      </div>
+    </div>
   </div>
 </div>
 <app-description>
