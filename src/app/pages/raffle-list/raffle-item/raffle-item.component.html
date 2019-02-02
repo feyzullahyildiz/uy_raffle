@@ -10,7 +10,7 @@
     </svg>
   </div>
 </div>
-<div class="left menu">
+<div class="left menu" [class.full-screen]="isLeftMenuFullScreen">
   <div class="menu-fix">
     <div class="add-user-form" [class.hide]="!editMode">
       <div class="form-item">
@@ -33,7 +33,7 @@
       </div>
     </div>
     <div class="user-list-info">
-      <div class="text">
+      <div class="text" (click)="leftMenuClick()">
         ÇEKİLİŞE KATILANLAR ({{users.length}})
       </div>
       <div class="right">
@@ -55,9 +55,9 @@
           <div class="user">
             {{user.no}} {{user.isim}}
           </div>
-          <!-- <div class="mosque">
+          <div class="mosque">
             {{user.cami}}
-          </div> -->
+          </div>
           <svg class="delete circle circle-mini" (click)="deleteItem(user)" xmlns="http://www.w3.org/2000/svg" width="24"
             height="24" viewBox="0 0 24 24">
             <path fill="white" d="M6 19c0 1.1.9 2 2 2h8c1.1 0 2-.9 2-2V7H6v12zM19 4h-3.5l-1-1h-5l-1 1H5v2h14V4z" />
@@ -93,10 +93,10 @@
     </div>
   </div>
 </div>
-<div class="right menu">
+<div class="right menu" [class.full-screen]="isRightMenuFullScreen">
   <div class="menu-fix">
       <div class="user-list-info">
-        <div class="text">
+        <div class="text" (click)="rightMenuClick()">
           KAZANANLAR ({{winnerList.length}})
         </div>
         <div class="right">

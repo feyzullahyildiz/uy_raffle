@@ -94,6 +94,7 @@
                 .text {
                     font-size: larger;
                     font-weight: 600;
+                    cursor: pointer;
                 }
                 .right {
                     display: flex;
@@ -150,6 +151,24 @@
         }
         &.right {
             grid-area: right;
+        }
+        &.full-screen {
+            position: fixed;
+            bottom: 0;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 100;
+            background-color: $secondary;;
+            .user-list{
+                display: grid !important;
+                grid-template-columns: 1fr 1fr 1fr;
+                grid-gap: 3px;
+                .user {
+                    font-size: 25px !important;
+                }
+            }
+
         }
     }
     .center {

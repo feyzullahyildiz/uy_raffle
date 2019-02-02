@@ -14,6 +14,11 @@ import Papa from 'papaparse';
 export class RaffleItemComponent implements OnInit {
   @ViewChild('raffleCountLeftElement') raffleCountLeftElement: ElementRef;
   constructor(public activatedRoute: ActivatedRoute, public dataService: DataService) { }
+  isRightMenuFullScreen = false
+  isLeftMenuFullScreen = false
+  
+
+  
   raffleItem
   users: Array<any>
   editMode = false
@@ -348,5 +353,11 @@ export class RaffleItemComponent implements OnInit {
     }
   }
 
+  rightMenuClick(){
+    this.isRightMenuFullScreen = !this.isRightMenuFullScreen
+  }
+  leftMenuClick(){
+    this.isLeftMenuFullScreen = !this.isLeftMenuFullScreen
+  }
   //  @HostBinding('class.someClass')
 }
