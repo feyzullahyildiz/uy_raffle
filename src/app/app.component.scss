@@ -29,6 +29,9 @@ $menuHoverColor: #eb3c39;
                 }
             }
         }
+        &.hide {
+            display: none;
+        }
     }
     .router-outlet {
         position: relative;

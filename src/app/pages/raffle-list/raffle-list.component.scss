@@ -18,6 +18,7 @@
             flex-grow: 1;
             background-color: #52b7d1;
             color: $secondaryText;
+            margin-right: 8px;
             .header {
                 display: flex;
                 flex-direction: row;
@@ -84,6 +85,9 @@
                         background-color: $primary;
                     }
                 }
+            }
+            &.hide {
+                display: none;
             }
         }
         .router-outlet {

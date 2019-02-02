@@ -7,12 +7,17 @@ const LIST_KEY = 'list_key'
 export class DataService {
     private items: Array<string>
     static THAT
+
+    isRaffleStarted = false
+    isRaffleEnded = false
+
     constructor() {
         console.log('HERE DATA SERVICE')
         if(DataService.THAT){
             return DataService.THAT
         }
-        DataService.THAT = this
+        DataService.THAT = this;
+        (<any>window).dataService = this;
         this.refreshRaffleItems()
     }
     refreshRaffleItems() {
@@ -57,5 +62,9 @@ export class DataService {
             return true
         }
         return false
+    }
+    duzelt(){
+        this.isRaffleEnded = false;
+        this.isRaffleStarted = false;
     }
 }

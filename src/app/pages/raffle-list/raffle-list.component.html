@@ -1,5 +1,5 @@
 <div class="container">
-    <div class="raffle-list-container">
+    <div class="raffle-list-container" [class.hide]="dataService.isRaffleStarted && !dataService.isRaffleEnded">
         <div class="header">
             <span class="title">Çekiliş Listeleri</span>
             <div class="right">
@@ -30,6 +30,6 @@
     </div>
 
 </div>
-<app-description>
+<app-description *ngIf="!dataService.isRaffleStarted || dataService.isRaffleEnded">
     Bu çekiliş türü önceden hazırlanmış olan bir listeden, isim baz alarak çekiliş yapılması için tasarlanmıştır.
 </app-description>

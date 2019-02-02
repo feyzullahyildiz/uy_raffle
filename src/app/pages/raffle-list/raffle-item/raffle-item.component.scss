@@ -6,7 +6,6 @@
     top: 0;
     left: 0;
     right: 0;
-    margin-left: 8px;
     display: grid;
     grid-template-areas: "header header header" "left center right";
     grid-template-rows: auto 1fr;
@@ -92,6 +91,10 @@
                 display: flex;
                 justify-content: space-between;
                 align-items: center;
+                .text {
+                    font-size: larger;
+                    font-weight: 600;
+                }
                 .right {
                     display: flex;
                     align-items: center;
@@ -108,19 +111,26 @@
                         background-color: $primary;
                         color: white;
                         padding: 8px;
-                        justify-content: space-between;
-                        align-items: center;
+                        // justify-content: space-between;
+                        // align-items: center;
+                        flex-direction: column;
                         &:nth-child(even) {
                             background-color: lighten($color: $primary, $amount: 10);
                         }
+
                         .user {
-                            padding: 0 8px;
                             word-break: break-all;
                             flex: 1;
                         }
                         svg.delete {
                             display: none;
 
+                        }
+                    }
+                    .winner-item {
+                        &:nth-child(1) {
+                            font-weight: 600;
+                            font-size: x-large;
                         }
                     }
                 }

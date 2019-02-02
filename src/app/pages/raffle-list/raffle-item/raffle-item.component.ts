@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef, HostListener, HostBinding } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { getRandomNumbers } from '../../../utils';
 import { Subject } from 'rxjs';
@@ -18,11 +18,9 @@ export class RaffleItemComponent implements OnInit {
   users: Array<any>
   editMode = false
   raffleCount = 1
-  isRaffleStarted;
   raffleCountLeft = 0;
   usersClone
   winnerList
-  isRaffleEnd = false
   animationSubject: Subject<any>
   @ViewChild('username') userNameElement: ElementRef;
   @ViewChild('userno') userNoElement: ElementRef;
@@ -32,11 +30,11 @@ export class RaffleItemComponent implements OnInit {
     this.activatedRoute.params.subscribe(raffleItem => {
       this.raffleItem = raffleItem.rafflename
       this.getUsers()
-      this.isRaffleStarted = false
+      this.dataService.isRaffleStarted = false
       this.winnerList = []
       this.usersClone = []
       this.raffleCountLeft = 0
-      this.isRaffleEnd = false
+      this.dataService.isRaffleEnded = false
     })
     this.animationSubject = new Subject();
   }
@@ -98,12 +96,12 @@ export class RaffleItemComponent implements OnInit {
     }
   }
   startRaffle() {
-    if (this.isRaffleStarted && window.confirm('Çekiliş Durdurulacak ?')) {
-      this.isRaffleStarted = false;
+    if (this.dataService.isRaffleStarted && window.confirm('Çekiliş Durdurulacak ?')) {
+      this.dataService.isRaffleStarted = false;
       this.raffleCountLeft = 0
       this.users = this.usersClone.slice()
     } else {
-      this.isRaffleStarted = true;
+      this.dataService.isRaffleStarted = true;
       this.raffleCountLeft = this.raffleCount
       this.usersClone = this.users.slice()
       this.winnerList = []
@@ -134,8 +132,8 @@ export class RaffleItemComponent implements OnInit {
   reset() {
     // this.getUsers()
     // this.users
-    this.isRaffleStarted = false
-    this.isRaffleEnd = true
+    this.dataService.isRaffleStarted = false
+    this.dataService.isRaffleEnded = true
     // this.winnerList = []
     // this.usersClone = []
     this.raffleCountLeft = 0
@@ -344,4 +342,6 @@ export class RaffleItemComponent implements OnInit {
       alert('Dosya bulunamadı')
     }
   }
+
+  //  @HostBinding('class.someClass')
 }

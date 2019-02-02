@@ -33,7 +33,7 @@
       </div>
     </div>
     <div class="user-list-info">
-      <div>
+      <div class="text">
         ÇEKİLİŞE KATILANLAR ({{users.length}})
       </div>
       <div class="right">
@@ -55,6 +55,9 @@
           <div class="user">
             {{user.no}} {{user.isim}}
           </div>
+          <!-- <div class="mosque">
+            {{user.cami}}
+          </div> -->
           <svg class="delete circle circle-mini" (click)="deleteItem(user)" xmlns="http://www.w3.org/2000/svg" width="24"
             height="24" viewBox="0 0 24 24">
             <path fill="white" d="M6 19c0 1.1.9 2 2 2h8c1.1 0 2-.9 2-2V7H6v12zM19 4h-3.5l-1-1h-5l-1 1H5v2h14V4z" />
@@ -67,22 +70,22 @@
 </div>
 
 <div class="center">
-  <!-- <div class="save-result-info" *ngIf="isRaffleEnd">
+  <!-- <div class="save-result-info" *ngIf="dataService.isRaffleEnded">
     Kalanları ve Kazananları Kaydet
   </div> -->
-  <div class="top-container" [class.swipe-top]="isRaffleStarted">
-    <app-raffle-button [disabled]="isRaffleEnd" [topSquare]="isRaffleStarted" [active]="isRaffleStarted" (click)="startRaffle()">
-      {{isRaffleStarted ? 'Çekilişi Durdur' : 'Çekilişi Başlat'}}
+  <div class="top-container" [class.swipe-top]="dataService.isRaffleStarted">
+    <app-raffle-button [disabled]="dataService.isRaffleEnded" [topSquare]="dataService.isRaffleStarted" [active]="dataService.isRaffleStarted" (click)="startRaffle()">
+      {{dataService.isRaffleStarted ? 'Çekilişi Durdur' : 'Çekilişi Başlat'}}
     </app-raffle-button>
-    <div class="info" *ngIf="!isRaffleStarted">
+    <div class="info" *ngIf="!dataService.isRaffleStarted">
       Kaç Kişi Çekilişe girecek.
       <input (keyup)="raffleCountChange($event)" type="number" [max]="users.length" min="1" [value]="raffleCount">
     </div>
   </div>
-  <div (click)="raffle()" class="center-container" [class.swipe-from-bottom]="isRaffleStarted">
+  <div (click)="raffle()" class="center-container" [class.swipe-from-bottom]="dataService.isRaffleStarted">
     Rastgele!!!
   </div>
-  <div class="bottom-container" [class.swipe-from-bottom]="isRaffleStarted">
+  <div class="bottom-container" [class.swipe-from-bottom]="dataService.isRaffleStarted">
     <div class="empty"></div>
     <div #raffleCountLeftElement class="rotateable rotate" style="font-size: xx-large">{{raffleCountLeft}}</div>
     <div>
@@ -93,8 +96,8 @@
 <div class="right menu">
   <div class="menu-fix">
       <div class="user-list-info">
-        <div>
-          KAZANANLAR
+        <div class="text">
+          KAZANANLAR ({{winnerList.length}})
         </div>
         <div class="right">
           <svg (click)="saveWinnerListCsv()" class="circle secondary" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
@@ -111,10 +114,13 @@
       </div>
     <div class="user-list-container">
 
-      <div class="user-list winner">
+      <div class="user-list">
         <div class="user-item winner-item" *ngFor="let user of winnerList">
             <div class="user">
                 {{user.no}} {{user.isim}}
+            </div>
+            <div class="mosque">
+              {{user.cami}}
             </div>
         </div>
       </div>

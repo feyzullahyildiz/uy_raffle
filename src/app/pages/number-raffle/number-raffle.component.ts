@@ -99,7 +99,7 @@ export class NumberRaffleComponent implements OnInit {
     })
     if(text){
       const textFileAsBlob = new Blob([text], { type: 'text/csv;charset=UTF-8' });
-      const fileNameToSaveAs = fileName;
+      const fileNameToSaveAs = fileName + '.csv';
   
       const downloadLink = document.createElement("a");
       downloadLink.download = fileNameToSaveAs;
