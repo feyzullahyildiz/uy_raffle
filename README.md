@@ -1,3 +1,15 @@
+
+# AÇIKLAMA
+
+Bu uygulama Haydi Çocuklar Camiye Programına özel çekiliş uygulamasıdır.
+[ÖRNEK UYGULAMA](https://feyzullahyildiz.github.io/hcc-raffle)
+
+
+
+
+
+
+
 # NgHccRuffle
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 7.1.4.
