@@ -96,11 +96,16 @@ export class RaffleItemComponent implements OnInit {
     }
   }
   startRaffle() {
-    if (this.dataService.isRaffleStarted && window.confirm('Çekiliş Durdurulacak ?')) {
+    if (this.dataService.isRaffleStarted) {
+      const confirmResult = window.confirm('Çekiliş Durdurulacak ?')
+      if(!confirmResult){
+        return
+      }
       this.dataService.isRaffleStarted = false;
       this.raffleCountLeft = 0
-      this.users = this.usersClone.slice()
+      // this.users = this.usersClone.slice()
     } else {
+
       this.dataService.isRaffleStarted = true;
       this.raffleCountLeft = this.raffleCount
       this.usersClone = this.users.slice()
