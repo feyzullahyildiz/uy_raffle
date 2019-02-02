@@ -128,9 +128,15 @@
                         }
                     }
                     .winner-item {
-                        &:nth-child(1) {
-                            font-weight: 600;
-                            font-size: x-large;
+                        .user {
+                            &:nth-child(1) {
+                                font-weight: 600;
+                                font-size: 36px;
+                            }
+                            &:nth-child(2) {
+                                font-weight: 600;
+                                font-size: 27px;
+                            }
                         }
                     }
                 }

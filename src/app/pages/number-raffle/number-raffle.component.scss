@@ -37,6 +37,7 @@
             justify-content: center;
             align-items: center;
             flex-direction: column;
+            position: relative;
 
             .info {
                 // opacity: .5;
@@ -44,6 +45,19 @@
                 align-items: center;
                 height: 50px;
   
+            }
+            .bottom-info {
+                position: absolute;
+                bottom: 0;
+                background-color: $primary;
+                color: white;
+                font-size: xx-large;
+                font-weight: 600;
+                padding: 35px 16px;
+                // padding-bottom: 40px;
+                border-top-left-radius: 50px;
+                border-top-right-radius: 50px;
+
             }
         }
         .result {
@@ -71,6 +85,14 @@
                     color: white;
                     &:nth-child(even){
                         background-color: lighten($color: $primary, $amount: 10);
+                    }
+                    &:nth-child(1){
+                        font-size: 70px;
+                        font-weight: 600;
+                    }
+                    &:nth-child(2){
+                        font-size: 45px;
+                        font-weight: 600;
                     }
                 }
             }

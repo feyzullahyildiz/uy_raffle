@@ -8,42 +8,63 @@ import Papa from 'papaparse';
 export class NumberRaffleComponent implements OnInit {
   constructor() { }
   ngOnInit() { 
-    this.raffleCount = 0;
+    // this.raffleCount = 0;
     this.raffleCountLeft = 0;
-    this.winnerList = [];
+    // this.winnerList = [];
+    this.resultArray = []
     this.isRaffleStarted = false
-    // this.isRaffleEnded = false
+    this.isRaffleEnded = false
+    this.start = 0;
+    this.end = 1500;
+    this.count = 10;
+    // this.checkNumbers()
   }
 
   isRaffleStarted: boolean
-  // isRaffleEnded: boolean
+  isRaffleEnded: boolean
   resultArray: Array<any>
-  raffleCount: number;
+  // raffleCount: number;
   raffleCountLeft: number;
-  winnerList: Array<number>;
+  // winnerList: Array<number>;
   
   start
   end
   count
   message
   success
-  getRandomNumbers() {
-    // console.log(start, end, count)
-    const start = this.start
-    const end = this.end
-    const count = this.count
+  raffleANewNumber(start, end) {
+    // const start = this.start
+    // const end = this.end
+    // const count = this.count
 
-    const arr = []
-    let i = 0;
-    while (i < count) {
+    // const arr = []
+    // let i = 0;
+    // while (i < count) {
+    //   let number = parseInt(<any>(Math.random() * (end - start + 1)))
+    //   number += parseInt(start)
+    //   if (arr.indexOf(number) === -1) {
+    //     i++;
+    //     arr.push(number)
+    //   }
+    // }
+    // return arr
+
+    let isUnique = false
+    let theUniqueNumber
+    while(!isUnique){
       let number = parseInt(<any>(Math.random() * (end - start + 1)))
       number += parseInt(start)
-      if (arr.indexOf(number) === -1) {
-        i++;
-        arr.push(number)
+      const isTheNumberInTheList = this.resultArray.indexOf(number) === -1
+      // console.log('isTheNumberInTheList', isTheNumberInTheList)
+      if(isTheNumberInTheList){
+        isUnique = true
+        theUniqueNumber = number
+        this.resultArray.unshift(theUniqueNumber)
       }
     }
-    return arr
+    // console.log('theUniqueNumber', theUniqueNumber)
+    return theUniqueNumber
+
   }
   checkNumbers() {
     const start = this.start
@@ -85,17 +106,33 @@ export class NumberRaffleComponent implements OnInit {
     this.count = val
     this.checkNumbers()
   }
-  raffle() {
-    const arr = this.getRandomNumbers()
-    this.resultArray = arr
+  startRaffle() {
+    // const arr = this.getRandomNumbers()
+    // this.resultArray = arr
     this.isRaffleStarted = true
+    this.raffleCountLeft = this.count
+  }
+  raffle(){
+    if(this.isRaffleEnded){
+      return
+    }
+    this.raffleCountLeft--
+    
+    console.log('raffleCountLeft', this.raffleCountLeft)
+    if(this.raffleCountLeft === 0){
+      this.isRaffleEnded = true
+    }
+    const number = this.raffleANewNumber(this.start, this.end)
   }
   downloadResult(){
     const fileName = window.prompt('Çekiliş sonucu için isim giriniz.');
-    this.resultArray.sort((a, b) => a - b);
+    if(fileName === null){
+      return
+    }
+    const sortedArray = this.resultArray.concat().sort((a, b) => a - b);
     const text = Papa.unparse({
       fields: ['no'],
-      data: this.resultArray.map(a => [a])
+      data: sortedArray.map(a => [a])
     })
     if(text){
       const textFileAsBlob = new Blob([text], { type: 'text/csv;charset=UTF-8' });

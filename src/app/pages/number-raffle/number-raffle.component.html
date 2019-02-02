@@ -8,34 +8,34 @@
     <div class="form-item">
       <div class="form-item-title"> Başlangıç Sayısı</div>
       <div class="form-item-text">
-        <input #raffleStartElement (input)="startValue($event)" type="number" value="0" min="1">
+        <input #raffleStartElement [disabled]="isRaffleStarted" (input)="startValue($event)" type="number" [value]="start" min="1">
       </div>
     </div>
     <div class="form-item">
       <div class="form-item-title"> Bitiş Sayısı</div>
       <div class="form-item-text">
-        <input #raffleEndElement (input)="endValue($event)" type="number" value="0" min="1">
+        <input #raffleEndElement [disabled]="isRaffleStarted" (input)="endValue($event)" type="number" [value]="end" min="1">
       </div>
     </div>
     <div class="form-item">
       <div class="form-item-title"> Toplam Çekiliş</div>
       <div class="form-item-text">
-        <input #raffleTotalElement (input)="countValue($event)" type="number" value="0" min="1">
+        <input #raffleTotalElement [disabled]="isRaffleStarted" (input)="countValue($event)" type="number" [value]="count" min="1">
       </div>
     </div>
   </div>
   <div class="raffle-container">
-    <div class="info">
-      <!-- <div class="message">
-        {{message}}
-      </div> -->
-    </div>
+
     <div class="form-item">
-      <app-raffle-button (click)="raffle()" [disabled]="!success || isRaffleStarted">Çekilişi Başlat</app-raffle-button>
+      <app-raffle-button *ngIf="!isRaffleStarted" (click)="startRaffle()" [disabled]="!success || isRaffleStarted">Çekilişi Başlat</app-raffle-button>
+      <app-raffle-button *ngIf="isRaffleStarted" [disabled]="isRaffleEnded" (click)="raffle()">Rastgele!!</app-raffle-button>
+    </div>
+    <div *ngIf="isRaffleStarted" class="bottom-info ">
+      KALAN {{raffleCountLeft}}
     </div>
   </div>
   <div class="result">
-    <button *ngIf="isRaffleStarted" (click)="downloadResult()" class="button-primary">Sırala ve İndir</button>
+    <button *ngIf="isRaffleStarted" (click)="downloadResult()" class="button-primary">Sırala ve İndir ({{resultArray.length}})</button>
     <ul>
       <li *ngFor="let res of resultArray">
         {{res}}
