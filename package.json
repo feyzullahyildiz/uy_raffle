@@ -8,7 +8,7 @@
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "build:gh-pages": "ng build --prod --base-href /uy-raffle/",
+    "build:gh-pages": "ng build --prod --base-href /uy_raffle/",
     "deploy:dist": "gh-pages -d dist",
     "deploy": "npm-run-all build:gh-pages deploy:dist"
   },
