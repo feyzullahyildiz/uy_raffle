@@ -5,12 +5,10 @@
   <div class="raffle-container">
     <div class="form-item">
       <!-- <app-raffle-button (click)="startRaffle()" [disabled]="!success || isRaffleStarted">Çekilişi Başlat</app-raffle-button> -->
-      <app-raffle-button (click)="raffle()" [disabled]="isRaffleEnded">Rastgele!!</app-raffle-button>
+      <app-raffle-button (click)="raffle()">Rastgele!!</app-raffle-button>
     </div>
   </div>
   <div class="result">
-    <button *ngIf="isRaffleStarted" (click)="downloadResult()" class="button-primary">Sırala ve İndir
-      ({{winnerList.length}})</button>
     <div class="result-container">
       <div class="scrollable">
         <ul>
