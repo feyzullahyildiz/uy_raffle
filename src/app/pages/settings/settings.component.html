@@ -1,0 +1,24 @@
+<div class="container">
+  <p>
+    Burada yapılacak olan ayarlar her sadece bu tarayıcı içerisinde kalacaktır.
+
+  </p>
+
+  <ul class="list">
+    <li class="list-item" *ngFor="let seat of seatList">
+
+      <span class="seat-name">
+        {{seat[0]}}
+      </span>
+      <input (input)="seatValueChange($event, seat)" type="number" [value]="seat[1]">
+    </li>
+  </ul>
+  <div class="bottom">
+    <button (click)="saveSeatConfig()" class="save">
+      Kaydet
+    </button>
+    <button (click)="resetSeatConfig()">
+      İlk Haline Getir.
+    </button>
+  </div>
+</div>

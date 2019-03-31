@@ -9,11 +9,8 @@
     right: 0;
     .form {
         display: grid;
-        grid-template-columns: 2fr 1fr 2fr;
-        // display: flex;
-        // flex-direction: row;
+        grid-template-columns: 1fr 1fr;
         flex: 1;
-        // padding-top: 24px;
         .input-list {
             display: flex;
             flex-direction: column;

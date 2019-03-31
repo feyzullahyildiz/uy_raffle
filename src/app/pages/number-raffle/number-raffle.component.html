@@ -1,46 +1,20 @@
 <div class="message">
-    {{message}}
-  </div>
+  {{message}}
+</div>
 <div class="form">
-
-  <div class="input-list">
-
-    <div class="form-item">
-      <div class="form-item-title"> Başlangıç Sayısı</div>
-      <div class="form-item-text">
-        <input #raffleStartElement [disabled]="isRaffleStarted" (input)="startValue($event)" type="number" [value]="start" min="1">
-      </div>
-    </div>
-    <div class="form-item">
-      <div class="form-item-title"> Bitiş Sayısı</div>
-      <div class="form-item-text">
-        <input #raffleEndElement [disabled]="isRaffleStarted" (input)="endValue($event)" type="number" [value]="end" min="1">
-      </div>
-    </div>
-    <div class="form-item">
-      <div class="form-item-title"> Toplam Çekiliş</div>
-      <div class="form-item-text">
-        <input #raffleTotalElement [disabled]="isRaffleStarted" (input)="countValue($event)" type="number" [value]="count" min="1">
-      </div>
-    </div>
-  </div>
   <div class="raffle-container">
-
     <div class="form-item">
-      <app-raffle-button *ngIf="!isRaffleStarted" (click)="startRaffle()" [disabled]="!success || isRaffleStarted">Çekilişi Başlat</app-raffle-button>
-      <app-raffle-button *ngIf="isRaffleStarted" [disabled]="isRaffleEnded" (click)="raffle()">Rastgele!!</app-raffle-button>
-    </div>
-    <div *ngIf="isRaffleStarted" class="bottom-info ">
-      KALAN {{raffleCountLeft}}
+      <!-- <app-raffle-button (click)="startRaffle()" [disabled]="!success || isRaffleStarted">Çekilişi Başlat</app-raffle-button> -->
+      <app-raffle-button (click)="raffle()" [disabled]="isRaffleEnded">Rastgele!!</app-raffle-button>
     </div>
   </div>
   <div class="result">
-    <button *ngIf="isRaffleStarted" (click)="downloadResult()" class="button-primary">Sırala ve İndir ({{resultArray.length}})</button>
+    <button *ngIf="isRaffleStarted" (click)="downloadResult()" class="button-primary">Sırala ve İndir
+      ({{winnerList.length}})</button>
     <div class="result-container">
       <div class="scrollable">
-
         <ul>
-          <li *ngFor="let res of resultArray">
+          <li *ngFor="let res of winnerList">
             {{res}}
           </li>
         </ul>
@@ -49,5 +23,5 @@
   </div>
 </div>
 <app-description>
-  Bu çekiliş 2 sayı arasında istenilen miktarda çekiliş yapabilmeniz içindir.
+  Bu çekiliş CRR salonu koltuk numaralarına özel olarak ayarlanmıştır.
 </app-description>

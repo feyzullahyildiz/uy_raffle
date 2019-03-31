@@ -12,6 +12,7 @@ import { DescriptionComponent } from './pages/description/description.component'
 import { EmptyRaffleItemComponent } from './pages/raffle-list/empty-raffle-item/empty-raffle-item.component';
 import { RaffleResultViewerComponent } from './pages/raffle-result-viewer/raffle-result-viewer.component';
 import { DataService } from './data.service';
+import { SettingsComponent } from './pages/settings/settings.component';
 
 @NgModule({
   declarations: [
@@ -24,6 +25,7 @@ import { DataService } from './data.service';
     DescriptionComponent,
     EmptyRaffleItemComponent,
     RaffleResultViewerComponent,
+    SettingsComponent,
   ],
   imports: [
     BrowserModule,
