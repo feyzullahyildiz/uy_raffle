@@ -2,7 +2,7 @@
 # AÇIKLAMA
 
 Bu uygulama Haydi Çocuklar Camiye Programına özel çekiliş uygulamasıdır.
-[ÖRNEK UYGULAMA](https://feyzullahyildiz.github.io/hcc-raffle)
+[ÖRNEK UYGULAMA](https://feyzullahyildiz.github.io/uy_raffle)
 
 
 
