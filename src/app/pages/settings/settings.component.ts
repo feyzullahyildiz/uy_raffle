@@ -33,8 +33,8 @@ export class SettingsComponent implements OnInit {
 
   }
   seatValueChange(event, seat) {
-    console.log(seat);
     const value = event.target.valueAsNumber
     seat[1] = value;
+    console.log(seat);
   }
 }

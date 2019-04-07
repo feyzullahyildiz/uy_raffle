@@ -22,7 +22,7 @@ export class NumberRaffleComponent implements OnInit {
   }
   raffle() {
     const len = this.list.length;
-    const index = Math.ceil(Math.random() * len);
+    const index = Math.ceil(Math.random() * len) - 1;
     const value = this.list[index];
     this.winnerList.unshift(value);
     console.log('LAST WINNER', value);
