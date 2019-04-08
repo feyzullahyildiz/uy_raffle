@@ -33,5 +33,11 @@
             border-top-left-radius: 0%;
             border-top-right-radius: 0%;
         }
+        &.count-mode {
+            font-size: 80px;
+            font-weight: 600;
+            width: 300px;
+            height: 300px;
+        }
     }
 }

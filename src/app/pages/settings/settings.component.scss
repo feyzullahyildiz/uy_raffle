@@ -34,4 +34,11 @@
         }
     }
   }
+  .divider {
+    background-color: lighten($color: #c1c1c1, $amount: 10);
+    width: 100%;
+    height: 40px;
+    box-sizing: border-box;
+
+  }
 }

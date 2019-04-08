@@ -1,3 +1,4 @@
-<button [disabled]="disabled" [class.active]="active" [class.top-square]="topSquare">
+<button [disabled]="disabled && !countMode" [class.active]="active" [class.top-square]="topSquare"
+[class.count-mode]="countMode">
   <ng-content></ng-content>
 </button>

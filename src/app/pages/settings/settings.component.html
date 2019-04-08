@@ -1,4 +1,15 @@
 <div class="container">
+  <div class="bottom">
+    <input [value]="backwardTime"
+    (input)="changeBackwardTime($event)"
+    style="min-width: 100px; font-size: large;" type="number" min="0" max="10" step="1">
+    <span>Saniye cinsinden</span>
+    <button (click)="setBackwardTime()">ÇEKİLİŞ BEKLEME SÜRESİ DEĞİŞİMİNİ ONAYLA</button>
+  </div>
+</div>
+
+<div class="divider"></div>
+<div class="container">
   <p>
     Burada yapılacak olan ayarlar her sadece bu tarayıcı içerisinde kalacaktır.
 
@@ -22,3 +33,4 @@
     </button>
   </div>
 </div>
+<div class="divider"></div>

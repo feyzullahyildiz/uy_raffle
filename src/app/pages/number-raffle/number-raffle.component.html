@@ -4,8 +4,16 @@
 <div class="form">
   <div class="raffle-container">
     <div class="form-item">
-      <!-- <app-raffle-button (click)="startRaffle()" [disabled]="!success || isRaffleStarted">Çekilişi Başlat</app-raffle-button> -->
-      <app-raffle-button (click)="raffle()">Rastgele!!</app-raffle-button>
+      <app-raffle-button *ngIf="!isRaffleStarted" (click)="changeRaffle(true)">Çekilişi Başlat</app-raffle-button>
+      <!-- <app-raffle-button *ngIf="isRaffleStarted" (click)="changeRaffle(false)" >Çekilişi Başlat</app-raffle-button> -->
+      <app-raffle-button *ngIf="isRaffleStarted" [disabled]="tickStarted" (click)="startTicking()"
+        [countMode]="tickStarted">
+        {{tickStarted ?
+          tickValue === 0 ? '' : tickValue
+          :
+          'Rastgele!!'
+        }}
+      </app-raffle-button>
     </div>
   </div>
   <div class="result">

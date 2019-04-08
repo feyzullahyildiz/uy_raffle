@@ -9,6 +9,7 @@ export class RaffleButtonComponent implements OnInit {
   @Input() disabled;
   @Input() active;
   @Input() topSquare;
+  @Input() countMode: boolean;
   constructor() { }
   ngOnInit() { }
   

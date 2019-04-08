@@ -62,3 +62,23 @@ export const calculateSeatList = () => {
   })
   return stringArray;
 }
+
+const BACKWARD_TIME_KEY = 'backward_time_key';
+export const getBackwardCountTime = () => {
+  const value = localStorage.getItem(BACKWARD_TIME_KEY);
+  if (value !== null) {
+    return +value;
+  }
+  return 10;
+}
+export const setBackwardCountTime = (value: number) => {
+  localStorage.setItem(BACKWARD_TIME_KEY, value.toString());
+}
+
+export const sleeper = (time) => {
+  return new Promise((res, rej) => {
+    setTimeout(() => {
+      res();
+    }, time);
+  })
+}
